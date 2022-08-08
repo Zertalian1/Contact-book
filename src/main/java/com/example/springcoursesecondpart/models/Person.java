@@ -2,43 +2,31 @@ package com.example.springcoursesecondpart.models;
 
 import javax.validation.constraints.*;
 
+
 public class Person {
     private int id;
-    @NotEmpty(message = "this field cannot be empty")
-    @Size(min = 2, max = 30)
-    private String name;
-    @Min(value = 0, message = "invalid value")
-    @Max(value = 150, message = "invalid value")
-    private int age;
-    @Email(message = "invalid value")
-    @NotEmpty(message = "this field cannot be empty")
-    private String mail;
 
-    public Person(int id, String name, int age, String mail) {
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    private String name;
+
+    @Min(value = 0, message = "Age should be greater than 0")
+    private int age;
+
+    @NotEmpty(message = "Email should not be empty")
+    @Email(message = "Email should be valid")
+    private String email;
+
+    public Person() {
+
+    }
+
+    public Person(int id, String name, int age, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
-
-        this.mail = mail;
+        this.email = email;
     }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public Person(){}
 
     public int getId() {
         return id;
@@ -55,4 +43,21 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
